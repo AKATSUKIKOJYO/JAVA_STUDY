@@ -40,15 +40,19 @@ public class Account {
 	}
 	
 	public void deposit(int money) {
-		this.balance += money;
 		System.out.println(">>" + money + "원을 입금합니다.");
-		System.out.println("계좌번호 : " + this.account + ", 잔액 : " + this.balance + ", 이자율 : " + this.interestRate + "%");
+		this.balance += money;
+		this.printAccountInfo();
 	}
 	
 	public void withdraw(int money) {
-		this.balance -= money;
 		System.out.println(">>" + money + "원을 출금합니다.");
-		System.out.println("계좌번호 : " + this.account + ", 잔액 : " + this.balance + ", 이자율 : " + this.interestRate + "%");
+		if(this.balance < money) {
+			System.out.println("[에러] 잔액이 부족합니다.");
+		} else {
+			this.balance -= money;
+		}
+		this.printAccountInfo();
 	}
 	
 	public void calculateInterst() {
@@ -60,7 +64,6 @@ public class Account {
 	}
 	
 	public void printAccountInfo() {
-		System.out.println(">>계좌를 생성합니다.");
 		System.out.println("계좌번호 : " + this.account + ", 잔액 : " + this.balance + ", 이자율 : " + this.interestRate + "%");
 	}
 	
